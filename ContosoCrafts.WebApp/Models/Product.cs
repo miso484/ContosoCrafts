@@ -17,6 +17,7 @@ namespace ContosoCrafts.WebSite.Models
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public int[] Ratings { get; set; }
+		//JsonSerializer provides functionality to serialize objects or value types to JSON and to deserialize JSON into objects or value types
 		public override string ToString() => JsonSerializer.Serialize<Product>(this);
 		
 	}
