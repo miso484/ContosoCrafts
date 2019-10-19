@@ -29,6 +29,7 @@ namespace ContosoCrafts.WebApp
 		{
 			services.AddRazorPages();
 			services.AddTransient<JsonFileProductService>();
+			services.AddControllers();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,13 +56,14 @@ namespace ContosoCrafts.WebApp
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapRazorPages();
+				endpoints.MapControllers();
 				// Make a Simple API that reads from products.json file
-				endpoints.MapGet("/products", (context) =>
-				{
-					var products = app.ApplicationServices.GetService<JsonFileProductService>().GetProducts();
-					var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
-					return context.Response.WriteAsync(json);
-				});
+				//endpoints.MapGet("/products", (context) =>
+				//{
+				//	var products = app.ApplicationServices.GetService<JsonFileProductService>().GetProducts();
+				//	var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
+				//	return context.Response.WriteAsync(json);
+				//});
 			});
 		}
 	}
