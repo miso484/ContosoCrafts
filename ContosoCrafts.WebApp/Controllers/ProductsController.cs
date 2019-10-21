@@ -25,5 +25,21 @@ namespace ContosoCrafts.WebApp.Controllers
 		{
 			return ProductService.GetProducts();
 		}
+
+		//[HttpPatch]  "[FromBody]"
+		//localhost:44300/products/rate?ProductId=jenlooper-cactus&rating=5
+		[Route("Rate")]
+		[HttpGet]
+		public ActionResult Patch([FromQuery] RatingRequest request)
+		{
+			ProductService.AddRating(request.ProductId, request.Rating);
+			return Ok();
+		}
+
+		public class RatingRequest
+		{
+			public string ProductId { get; set; }
+			public int Rating { get; set; }
+		}
     }
 }
